@@ -1,7 +1,8 @@
 ﻿#pragma strict
-var DISTANCE_FIND :int = 2;
+var DISTANCE_FIND :int = 10;
 private var player: GameObject;
-public var AI_LOCATION_START : Vector3;
+private var AI_LOCATION_START : Vector3;
+var Obstacle_State : int = 0;
 function Start () {
 	player = GameObject.Find("player");
 	AI_LOCATION_START = new Vector3(transform.position.x,transform.position.y,transform.position.z);
@@ -12,8 +13,10 @@ function Update () {
 		{
 		if(Input.GetKey(KeyCode.P))
 		{
-			Debug.Log("通过");
+			Debug.Log("Pass");
+			gameObject.SetActive(false);
 			Destroy(gameObject);
+			Obstacle_State =1;
 		}
 		}
 }
